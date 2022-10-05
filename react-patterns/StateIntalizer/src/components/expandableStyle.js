@@ -29,7 +29,8 @@ export const Content = styled.div`
  width: 203px;
  background: #9e9e9e;
  transition:0.5s ease-in-out;
- height: 150px;
+ height: ${({isActive})=>isActive?'320px':'150px'};
+ cursor: pointer;
  &:hover{
     height:320px;
  }

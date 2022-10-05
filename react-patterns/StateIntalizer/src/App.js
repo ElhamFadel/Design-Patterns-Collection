@@ -1,6 +1,8 @@
 import useExpanded from "./useExpanded";
 import {Expandable} from "./components";
 import {image2,image3 } from "./assets";
+import ExpandableState from "./components/ExpandableState";
+import {useState} from "react";
 import './App.css';
 const information = [
   {
@@ -21,12 +23,13 @@ const information = [
 ]
 
 function App() {
-  const {expanded,toggleExpanded} = useExpanded();
   return (
     <div className="App">
+      <ExpandableState>
       {
-        information.map((props)=><Expandable {...props}  />)
+        information.map((props)=><Expandable  {...props}  />)
       }
+      </ExpandableState>
     </div>
   );
 }
