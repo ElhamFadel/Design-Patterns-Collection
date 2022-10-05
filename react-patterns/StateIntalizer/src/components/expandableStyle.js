@@ -34,6 +34,11 @@ export const Content = styled.div`
  &:hover{
     height:320px;
  }
+  ${Body}{
+    visibility:${({isActive})=>isActive?'visible':'hidden'};
+    opacity:${({isActive})=>isActive?1:0};
+    margin-top:${({isActive})=>isActive?'-10px':'-140px'};
+ }
  &:hover ${Body}{
     visibility:visible;
     opacity:1;

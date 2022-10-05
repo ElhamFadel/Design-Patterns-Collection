@@ -3,15 +3,21 @@ import { createContext, useState, useCallback, useMemo } from 'react'
 export const ExpandableContext = createContext()
 const { Provider } = ExpandableContext
 
-const ExpandableState = ({ children }) => {
-  const [expanded, setExpanded] = useState("person2")
+const ExpandableState = ({ children, initialExpanded = "person2"  }) => {
+  const [expanded, setExpanded] = useState(initialExpanded)
   const toggle = useCallback(
     (id) => setExpanded(id),
     []
   )
+  const reset = useCallback(
+    () => {
+      setExpanded(initialExpanded)
+    },
+    [initialExpanded]
+  )
   const value = useMemo(
-   () => ({ expanded, toggle }), 
-   [expanded, toggle]
+   () => ({ expanded, toggle,reset }), 
+   [expanded, reset, toggle]
   )
   return (
     <Provider value={value}>
